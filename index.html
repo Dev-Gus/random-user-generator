@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+</head>
+
+<body>
+    <main id="generator-container">
+        <h1 class="title">Random User Generator</h1>
+
+        <div class="card-wrapper">
+            <section id="card">
+                <div class="details">
+                    <div class="photo_container">
+                        <img id="user_photo" src="" alt="">
+                    </div>
+                    <p id="user_title"></p>
+                    <p id="user_value"></p>
+                </div>
+
+                <ul id="values_list">
+                    <li tabindex="0" data-title="Hi, My name is" data-label="name">
+                        <i class="fa-solid fa-user"></i>
+                    </li>
+                    <li tabindex="0" data-title="My email address is" data-label="email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </li>
+                    <li tabindex="0" data-title="My birthday is" data-label="birthday">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </li>
+                    <li tabindex="0" data-title="My address is" data-label="location">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </li>
+                    <li tabindex="0" data-title="My phone number is" data-label="phone">
+                        <i class="fa-solid fa-phone"></i>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="skeleton" class="hidden">
+                <div class="skeleton-details">
+                    <div class="skeleton-photo"></div>
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-value"></div>
+                </div>
+
+                <div class="skeleton-icons">
+                    <div class="skeleton-icon"></div>
+                    <div class="skeleton-icon"></div>
+                    <div class="skeleton-icon"></div>
+                    <div class="skeleton-icon"></div>
+                    <div class="skeleton-icon"></div>
+                </div>
+            </section>
+
+            <section id="statusArea" class="hidden">
+                <svg id="loader" class="spinner" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="#e0e0e0" stroke-width="3"></circle>
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="#1976d2" stroke-width="3"
+                        stroke-dasharray="31.4 94.2" stroke-linecap="round"></circle>
+                </svg>
+
+                <div id="statusContent">
+                    <p id="status"></p>
+                </div>
+            </section>
+        </div>
+
+
+        <section class="btn-container">
+            <button id="btn">Get New User</button>
+        </section>
+
+    </main>
+
+    <script src="user-generator.js"></script>
+</body>
+
+</html>

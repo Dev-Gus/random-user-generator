@@ -1,0 +1,347 @@
+/*==========================================
+   ROOT VARIABLES & GLOBAL RESET
+==========================================*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --color-primary: #0d539a;
+    --color-secondary: #42A5F5;
+    --color-text: #333333;
+    --color-text-subtle: #888888;
+    --color-background: #e8e1e1;
+    --color-card-bg: #FFFFFF;
+    --color-border: #E0E0E0;
+
+    --font-heading: "Montserrat", sans-serif;
+    --font-body: "Robot", sans-serif;
+
+    --spacing-xs: .5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    text-align: center;
+}
+
+
+/*==========================================
+   LAYOUT & CONTAINERS
+==========================================*/
+#generator-container {
+    width: 90%;
+    max-width: 600px;
+}
+
+.title {
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+/*==========================================
+   BUTTON
+==========================================*/
+
+#btn {
+    background: #04274a;
+    background: linear-gradient(176deg, rgba(4, 39, 74, 1) 0%, rgba(25, 118, 210, 1) 100%);
+    color: var(--color-card-bg);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+/*==========================================
+    CARDS & STATUS
+==========================================*/
+.card-wrapper {
+    position: relative;
+    min-height: 350px;
+    height: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+#card {
+    background: var(--color-card-bg);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    padding-bottom: var(--spacing-sm);
+    margin: 0;
+}
+
+#card::before {
+    content: "";
+    display: block;
+    height: 100px;
+    background: linear-gradient(176deg, rgba(4, 39, 74, 1) 0%, rgba(25, 118, 210, 1) 100%);
+}
+
+.details {
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+    margin-top: calc(-100px + 50px);
+}
+
+#user_title {
+    color: var(--color-text-subtle);
+    font-weight: 400;
+    margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
+    font-size: 1.2rem;
+}
+
+#user_value {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-lg) 0;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#user_photo {
+    margin-bottom: var(--spacing-sm);
+    border-radius: 6px;
+}
+
+#user_photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--color-card-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#statusArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 10;
+    margin: 0;
+    backdrop-filter: blur(2px);
+}
+
+#status {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #a61b1b;
+    text-align: center;
+    padding: 0 var(--spacing-sm);
+}
+
+/*==========================================
+   ICONS & NAVIGATION
+==========================================*/
+#values_list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0 0 0;
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#values_list li {
+    flex-grow: 1;
+    text-align: center;
+    padding: var(--spacing-sm) 0;
+    cursor: pointer;
+    font-size: 1.4rem;
+    position: relative;
+    color: var(--color-text-subtle);
+    transition: color .2s ease, border-bottom .2s ease;
+}
+
+#values_list li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: width .3s ease;
+}
+
+#values_list li.active::after {
+    width: 100%;
+}
+
+#values_list li:hover {
+    color: var(--color-primary);
+}
+
+#values_list li.active,
+#values_list li.active:hover {
+    color: var(--color-primary);
+}
+
+
+/*==========================================
+    LOADING SPINNER
+==========================================*/
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+#loader {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease cubic-bezier(.2, .9, .3, 1);
+}
+
+.spinner circle:last-child {
+    stroke: #1E88E5;
+    animation: spin 1.2s linear infinite;
+    transform-origin: 25px 25px;
+}
+
+/*==========================================
+    SKELETON LOADING
+==========================================*/
+#skeleton {
+    background: var(--color-card-bg);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    min-height: 350px;
+    padding-bottom: var(--spacing-sm);
+}
+
+#skeleton::before {
+    content: "";
+    display: block;
+    height: 100px;
+    background: linear-gradient(176deg, rgba(4, 39, 74, 1) 0%, rgba(25, 118, 210, 1) 100%);
+}
+
+.skeleton-details {
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+    margin-top: calc(-100px + 50px);
+}
+
+.skeleton-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto var(--spacing-sm) auto;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+.skeleton-title {
+    width: 150px;
+    height: 1.2rem;
+    margin: var(--spacing-sm) auto var(--spacing-xs) auto;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+.skeleton-value {
+    width: 200px;
+    height: 1.7rem;
+    margin: 0 auto var(--spacing-lg) auto;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+.skeleton-icons {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.skeleton-icon {
+    flex-grow: 1;
+    height: 60px;
+    padding: var(--spacing-sm);
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 2px;
+    margin: var(--spacing-xs);
+}

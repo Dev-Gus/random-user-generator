@@ -17,7 +17,7 @@ This project demonstrates modern **JavaScript best practices**, including:
 ## Features
 
 - **Random User Fetching** – Generates a new user profile with every click
-- **Interactive Details** – Click on icons to reveal different user information (name, email, birthday, location, phone)
+- **Interactive Details** – Hover/enter-space on icons to reveal different user information (name, email, birthday, location, phone)
 - **Skeleton Loading** – Smooth loading state with skeleton UI while data is being fetched
 - **Error Handling** – Graceful error messages if the API request fails
 - **Responsive Design** – Works beautifully on desktop, tablet, and mobile devices

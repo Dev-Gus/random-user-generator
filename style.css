@@ -62,6 +62,7 @@ h3 {
 .title {
     margin-bottom: var(--spacing-md);
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .btn-container {
